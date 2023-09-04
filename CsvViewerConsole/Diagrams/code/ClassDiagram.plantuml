@@ -1,0 +1,41 @@
+@startuml
+!theme spacelab
+
+class Viewer {
+  -string _csvFilePath
+  -int _pageLength
+  -string[] _csvData
+  -string _firstLine
+  --
+  +{static} void Main(string[] args)
+  +Viewer(string filename, int pagelength)
+  +void Run()
+  --
+  -void Show(string[] csvData, int pageLength)
+  -void DisplayCurrentPageAndOptions()
+  -char GetUserCommand()
+  -void ExecuteCommand(char command)
+  -static void DisplayCsvPage(IReadOnlyList<string> pageData, string firstLine)
+  -static List<int> GetColumnWidths(IReadOnlyList<string> pageData, string firstLine)
+  -static string CreateDisplayLine(string dataLine, IReadOnlyList<int> columnWidths)
+}
+
+class File {
+  +static string[] ReadAllLines(string path)
+}
+
+class Environment {
+  +static void Exit(int exitCode)
+}
+
+class Console {
+  +static void Clear()
+  +static ConsoleKeyInfo ReadKey()
+  +static void WriteLine(string value)
+  +static void Write(string value)
+}
+
+Viewer --> File : Reads CSV
+Viewer --> Environment : Exits program
+Viewer --> Console : User I/O
+@enduml

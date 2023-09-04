@@ -1,0 +1,40 @@
+@startuml
+!theme spacelab
+
+actor User
+participant Viewer as "Viewer Class"
+
+User -> Viewer : Run()
+activate Viewer
+
+Viewer -> Viewer : ReadAndSeparateLines(_csvFilePath)
+Viewer -> File : ReadAllLines(_csvFilePath)
+File --> Viewer : lines[]
+
+Viewer -> Viewer : Show(_csvData, _pageLength)
+activate Viewer
+
+loop Until 'e' is pressed
+  Viewer -> Viewer : DisplayCurrentPageAndOptions()
+  Viewer -> Console : Clear()
+  Viewer -> Viewer : GetCurrentPage()
+  Viewer -> Viewer : DisplayCsvPage(currentPage, _firstLine)
+  Viewer -> User : Display options (F)irst, (L)ast, (N)ext, (P)rev, (E)xit
+  User -> Viewer : Command (e/f/l/n/p)
+  Viewer -> Viewer : ExecuteCommand(command)
+  alt command == 'e'
+    Viewer -> Environment : Exit(0)
+  else command == 'f'
+    Viewer -> Viewer : currentPageIndex = 0
+  else command == 'l'
+    Viewer -> Viewer : currentPageIndex = (totalPages - 1) * _pageLength
+  else command == 'n'
+    Viewer -> Viewer : currentPageIndex += _pageLength
+  else command == 'p'
+    Viewer -> Viewer : currentPageIndex -= _pageLength
+  end
+end
+
+deactivate Viewer
+deactivate Viewer
+@enduml

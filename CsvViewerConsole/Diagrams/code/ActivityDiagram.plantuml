@@ -1,0 +1,38 @@
+@startuml
+!theme spacelab
+
+start
+
+:Initialize Viewer;
+
+if (File Exists?) then (yes)
+  :Read CSV File;
+  :Separate Header and Data;
+else (no)
+  :Exit Program;
+  stop
+endif
+
+:Display First Page;
+
+while (User Command != 'e') is (true)
+  :Display Options;
+  -> User;
+  :Get User Command;
+  -> Viewer;
+  if (Command == 'f') then (yes)
+    :Go to First Page;
+  elseif (Command == 'l') then (yes)
+    :Go to Last Page;
+  elseif (Command == 'n') then (yes)
+    :Go to Next Page;
+  elseif (Command == 'p') then (yes)
+    :Go to Previous Page;
+  else (Command == 'e')
+    :Exit Program;
+    stop
+  endif
+endwhile
+
+stop
+@enduml
