@@ -3,6 +3,8 @@
 My solution for this exercise: https://kurse.ccd-akademie.de/en/csv-viewer-i/ <br />
 This console application was built using .NET 7
 
+Usage: CsvViewerConsole.exe <file_name>.csv \<pagelength\>
+
 It accepts files structured in this way:
 
 Name;Age;City
