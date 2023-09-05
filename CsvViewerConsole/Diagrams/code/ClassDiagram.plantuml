@@ -7,14 +7,10 @@ class Viewer {
   -string[] _csvData
   -string _firstLine
   --
-  +{static} void Main(string[] args)
   +Viewer(string filename, int pagelength)
   +void Run()
   --
   -void Show(string[] csvData, int pageLength)
-  -void DisplayCurrentPageAndOptions()
-  -char GetUserCommand()
-  -void ExecuteCommand(char command)
   -static void DisplayCsvPage(IReadOnlyList<string> pageData, string firstLine)
   -static List<int> GetColumnWidths(IReadOnlyList<string> pageData, string firstLine)
   -static string CreateDisplayLine(string dataLine, IReadOnlyList<int> columnWidths)
