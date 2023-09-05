@@ -102,8 +102,9 @@ namespace CsvViewerConsole
             // Action to print a line in a formatted manner.
             Action<string> printLine = line => Console.WriteLine(CreateDisplayLine(line, columnWidths));
 
-            // Display the header and separator.
-            new[] { separator, firstLine }.ToList().ForEach(printLine);
+            // Display the header and separators.
+            Console.WriteLine(separator);
+            new[] { firstLine }.ToList().ForEach(printLine);
             Console.WriteLine(separator);
 
             // Display each data line.
