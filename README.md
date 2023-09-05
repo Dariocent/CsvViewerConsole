@@ -17,4 +17,4 @@ Yuri;23;Moscow        <br />
 Stephanie;47;Stockholm<br />
 Nadia;29;Madrid       <br />
 
-The application provide an interactive console interface for viewing CSV files.
+The application provides an interactive console interface for viewing CSV files.
